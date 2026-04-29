@@ -4,7 +4,6 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 public class MainGame {
   
-public class Game {
      private CanvasWindow canvas;
      private int Lives = 3;
 
@@ -23,6 +22,9 @@ public class Game {
                resetGame();
           }
      }
+     private void createBackground(){
+          createBackground();
+     }
 
 
 
@@ -40,4 +42,4 @@ Crouch
 */
 // runGame
 
-}
+
