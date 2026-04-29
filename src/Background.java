@@ -1,8 +1,8 @@
 
-
 import java.awt.Color;
 
 import edu.macalester.graphics.CanvasWindow;
+import edu.macalester.graphics.GraphicsText;
 import edu.macalester.graphics.Rectangle;
 
 public class Background{
@@ -11,12 +11,67 @@ public class Background{
     public static final Color GROUND_COLOR = new Color(122, 181, 107);
     private CanvasWindow canvas;
 
+    private int score = 0;
+    private int time = 230;
+    private int lives = 3;
+
+    private GraphicsText scoreText;
+    private GraphicsText timeText;
+    private GraphicsText livesText;
+
     public static void main(String[] args) {
     Background bg = new Background();
     bg.canvas = new CanvasWindow("MyPlatformer", 800, 600);
     bg.createBackground(); 
+    bg.createHUD();
+    bg.runTimer();
     bg.canvas.draw();
 }
+
+    private void createHUD() {
+        scoreText = new GraphicsText("Score: " + score, 10,25);
+        scoreText.setFontSize(20);
+        canvas.add(scoreText);
+
+        timeText = new GraphicsText("Time: " + time, canvas.getWidth() / 2 - 40, 25);
+        timeText.setFontSize(20);
+        canvas.add(timeText);
+
+        livesText = new GraphicsText("Lives x" + lives, canvas.getWidth() - 110,25);
+        livesText.setFontSize(20);
+        canvas.add(livesText);
+    }
+
+    private void runTimer() {
+        final double [] elapsed = {0};
+        canvas.animate ((dt) -> {
+            elapsed[0] += dt;
+            if (elapsed [0] >= 1.0 && time > 0){
+                time--;
+                elapsed[0] = 0;
+                timeText.setText("Time: " + time);
+            }
+        });
+    }
+
+    // private void runTimer() {
+    //     canvas.animate(() -> {
+    //         if (time > 0) {
+    //             time--;
+    //             timeText.setText("Time: " + time);
+    //         }
+    //     });
+    // }
+
+    public void updateScore(int newScore) {
+        score = newScore;
+        scoreText.setText("Score: " + score);
+    }
+
+    public void updateLives (int newLives){
+        lives = newLives;
+        livesText.setText("Lives x" + lives);
+    }
 
     public void createBackground() {
         Rectangle sky = new Rectangle(0, 0, canvas.getWidth(), canvas.getHeight());
