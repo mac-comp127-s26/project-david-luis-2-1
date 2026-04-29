@@ -1,20 +1,15 @@
 
 
+import java.awt.Color;
+
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Rectangle;
-
-import java.awt.Color;
 
 public class Background{
     private static final int GROUND_HEIGHT = 100;
     public static final Color SKY_COLOR = new Color(188, 217, 255);
     public static final Color GROUND_COLOR = new Color(122, 181, 107);
-
-    private final CanvasWindow canvas;
-
-    public Background(CanvasWindow canvas){
-        this.canvas = canvas;
-    }
+    private CanvasWindow canvas;
 
     private void createBackground() {
         Rectangle sky = new Rectangle(0, 0, canvas.getWidth(), canvas.getHeight());

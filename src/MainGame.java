@@ -3,30 +3,30 @@
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 public class MainGame {
-  
-public class Game {
-     private CanvasWindow canvas;
-     private int Lives = 3;
+     private CanvasWindow canvasWindow;
 
-     private void runningGame(){
-          if (Lives > 0){
-               runningGame();
-          }
-          else{
-               resetGame();
-          }
+     CanvasWindow canvas = new CanvasWindow("MyPlatformer", 800, 600);
+     Background bg = new Background(canvas);
+     createBackground();
+
+     // private int Lives = 3;
+
+     // private void runGame(){
+     //      if (Lives > 0){
+     //           runGame();
+     //      }
+     //      else{
+     //           resetGame();
+     //      }
+     // }
+
+     // private void resetGame(){
+     //      if (Lives == 0){
+     //           System.out.println("Game is over");
+     //           resetGame();
+     //      }
+     // }
      }
-
-     private void resetGame(){
-          if (Lives == 0){
-               System.out.println("Game is over");
-               resetGame();
-          }
-     }
-
-
-
-}
 
 /*
 Methods:
@@ -35,9 +35,7 @@ ResetGame
 Movement
 Jump 
 Crouch
-
-
 */
-// runGame
 
-}
+
+
