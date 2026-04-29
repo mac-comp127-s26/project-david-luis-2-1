@@ -20,6 +20,7 @@ public class Character {
         return Rectangle;
     } 
     
-}
+} 
+
 
 
