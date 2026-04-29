@@ -53,15 +53,6 @@ public class Background{
         });
     }
 
-    // private void runTimer() {
-    //     canvas.animate(() -> {
-    //         if (time > 0) {
-    //             time--;
-    //             timeText.setText("Time: " + time);
-    //         }
-    //     });
-    // }
-
     public void updateScore(int newScore) {
         score = newScore;
         scoreText.setText("Score: " + score);
