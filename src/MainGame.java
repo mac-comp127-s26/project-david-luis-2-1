@@ -2,6 +2,7 @@
 
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
+
 public class MainGame {
      private int Lives = 3;
 
@@ -23,8 +24,6 @@ public class MainGame {
      private void createBackground(){
           createBackground();
      }
-
-
 
 }
 
