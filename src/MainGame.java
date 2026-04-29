@@ -1,32 +1,33 @@
- import java.util.ResourceBundle.Control;
-
 import edu.macalester.graphics.CanvasWindow;
-import edu.macalester.graphics.GraphicsGroup;
+
 public class MainGame {
-     private int Lives = 3;
+     private static final int CANVAS_HEIGHT = 600;
+     private static final int CANVAS_WIDTH = 600;
+     private Character character;
+     private Background background;
+     private CanvasWindow canvasWindow;
 
-     private void runGame(){
-          if (Lives > 0){
-               runGame();
-          }
-          else{
-               resetGame();
-          }
+     public MainGame(){
+          canvasWindow = new CanvasWindow("HI", CANVAS_WIDTH, CANVAS_HEIGHT);
+          character = new Character(canvasWindow);
+          background = new Background(canvasWindow);
+          character.addToCanvas(canvasWindow);
      }
+  
+   public static void main(String[] args) {
+        new MainGame();
+    }
 
-     private void resetGame(){
-          if (Lives == 0){
-               System.out.println("Game is over");
-               resetGame();
-          }
-     }
-     private void createBackground(){
-          createBackground();
-     }
+     
 
+
+   
+   
 
 
 }
+
+
 
 
 

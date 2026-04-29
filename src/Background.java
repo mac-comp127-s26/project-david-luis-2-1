@@ -19,15 +19,14 @@ public class Background{
     private GraphicsText timeText;
     private GraphicsText livesText;
 
-    public static void main(String[] args) {
-    Background bg = new Background();
-    bg.canvas = new CanvasWindow("MyPlatformer", 800, 600);
-    bg.createBackground(); 
-    bg.createHUD();
-    bg.runTimer();
-    bg.canvas.draw();
-}
 
+    public Background(CanvasWindow canvas){
+        this.canvas = canvas;
+        createBackground();
+        createHUD();
+        runTimer();
+    }
+   
     private void createHUD() {
         scoreText = new GraphicsText("Score: " + score, 10,25);
         scoreText.setFontSize(20);
