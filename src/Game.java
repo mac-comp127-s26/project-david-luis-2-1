@@ -12,12 +12,12 @@ public class Game {
                runningGame();
           }
           else{
-               break;
+               resetGame();
           }
      }
 
      private void resetGame(){
-          if (Lives = 0){
+          if (Lives == 0){
                System.out.println("Game is over");
                resetGame();
           }
