@@ -3,22 +3,16 @@
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 public class MainGame {
-     private CanvasWindow canvasWindow;
+     private int Lives = 3;
 
-     CanvasWindow canvas = new CanvasWindow("MyPlatformer", 800, 600);
-     Background bg = new Background(canvas);
-     createBackground();
-
-     // private int Lives = 3;
-
-     // private void runGame(){
-     //      if (Lives > 0){
-     //           runGame();
-     //      }
-     //      else{
-     //           resetGame();
-     //      }
-     // }
+     private void runGame(){
+          if (Lives > 0){
+               runGame();
+          }
+          else{
+               resetGame();
+          }
+     }
 
      private void resetGame(){
           if (Lives == 0){
@@ -26,20 +20,16 @@ public class MainGame {
                resetGame();
           }
      }
+     private void createBackground(){
+          createBackground();
+     }
 
 
 
 }
 
-/*
-Methods:
-runGame
-ResetGame
-Movement
-Jump 
-Crouch
-*/
 
 
 
-}
+
+

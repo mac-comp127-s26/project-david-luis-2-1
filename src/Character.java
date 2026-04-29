@@ -1,13 +1,8 @@
 
-
-
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Point;
 import edu.macalester.graphics.Rectangle;
-
-
-
 
 
 public class Character {

@@ -11,7 +11,14 @@ public class Background{
     public static final Color GROUND_COLOR = new Color(122, 181, 107);
     private CanvasWindow canvas;
 
-    private void createBackground() {
+    public static void main(String[] args) {
+    Background bg = new Background();
+    bg.canvas = new CanvasWindow("MyPlatformer", 800, 600);
+    bg.createBackground(); 
+    bg.canvas.draw();
+}
+
+    public void createBackground() {
         Rectangle sky = new Rectangle(0, 0, canvas.getWidth(), canvas.getHeight());
         sky.setFillColor(SKY_COLOR);
         sky.setFilled(true);
