@@ -26,7 +26,7 @@ public class Character {
      }
      
      private void jump(){
-        double 
+    
      }
 
      private void crouch(){
