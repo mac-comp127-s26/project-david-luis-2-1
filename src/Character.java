@@ -8,17 +8,21 @@ import edu.macalester.graphics.Rectangle;
 // use as reference: https://stackoverflow.com/questions/18384707/sprite-movement-in-java
 
 public class Character {
-   private GraphicsGroup character; 
-   private Rectangle rectangle;
+   public Rectangle placeHolder = new Rectangle(10, 10, 10, 10);
    private CanvasWindow canvas;
-   private double XCoordinate
+   private double charXCoordinate;
+   private double charYCoordinate;
 
-   private void makeCharacter(){
-      Rectangle placerHolder = new Rectangle(10, 10, 10, 10);
-      canvas.add(placerHolder);
+   public void makeCharacter(){
+    canvas.add(placeHolder);
    }
-   private v
-
+   private double getXCoordinate(){
+      return charXCoordinate;
+   }
+   private double getYCoordinate(){
+      return charYCoordinate;
+   }
+   
 
 
    
