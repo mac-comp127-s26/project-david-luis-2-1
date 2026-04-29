@@ -20,13 +20,16 @@ public class MainGame {
      //      }
      // }
 
-     // private void resetGame(){
-     //      if (Lives == 0){
-     //           System.out.println("Game is over");
-     //           resetGame();
-     //      }
-     // }
+     private void resetGame(){
+          if (Lives == 0){
+               System.out.println("Game is over");
+               resetGame();
+          }
      }
+
+
+
+}
 
 /*
 Methods:
@@ -39,3 +42,4 @@ Crouch
 
 
 
+}

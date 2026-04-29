@@ -7,7 +7,7 @@ import edu.macalester.graphics.Point;
 import edu.macalester.graphics.Rectangle;
 
 
-// use as reference: https://stackoverflow.com/questions/18384707/sprite-movement-in-java
+
 
 
 public class Character {
