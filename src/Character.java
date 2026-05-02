@@ -12,7 +12,6 @@ public class Character {
    private boolean onGround = true;
    private static final double JUMP_POWER = -10;
 
-
     public Character(CanvasWindow canvas) {
       this.canvas = canvas;
       this.Rectangle = new Rectangle(x, y, 40, 60);
@@ -44,8 +43,7 @@ public class Character {
             }
 
         });
-        Rectangle.setPosition(x, y);
-        
+        Rectangle.setPosition(x, y);  
     }
 
    public void addToCanvas(CanvasWindow canvasWindow) {
@@ -55,9 +53,4 @@ public class Character {
     public Rectangle getRectangle() {
         return Rectangle;
     } 
-    
-
 } 
-
-
-

@@ -19,7 +19,6 @@ public class Background{
     private GraphicsText timeText;
     private GraphicsText livesText;
 
-
     public Background(CanvasWindow canvas){
         this.canvas = canvas;
         createBackground();
@@ -76,5 +75,9 @@ public class Background{
         ground.setFillColor(GROUND_COLOR);
         ground.setStroked(false);
         canvas.add(ground);
+    }
+
+    public int getTime(){
+        return time;
     }
 }
