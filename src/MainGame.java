@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
 import edu.macalester.graphics.CanvasWindow;
 
@@ -8,16 +10,32 @@ public class MainGame {
      private Character character;
      private Background background;
      private CanvasWindow canvasWindow;
-
+     private List <Obstacles> obstacles = new ArrayList<>();
      private int score = 0;
      private int lives = 3;
 
      public MainGame(){
           canvasWindow = new CanvasWindow("HI", CANVAS_WIDTH, CANVAS_HEIGHT);
-          character = new Character(canvasWindow);
           background = new Background(canvasWindow);
+        Obstacles firstPlatform = new Obstacles(canvasWindow, 150, 350, 120, 20, Color.ORANGE);
+        Obstacles secondPlatform = new Obstacles(canvasWindow, 380, 280, 120, 20, Color.ORANGE);
+        Obstacles firstWall = new Obstacles(canvasWindow, 300, 420, 20, 80, Color.GRAY);
+        Obstacles secondWall = new Obstacles(canvasWindow, 500, 420, 20, 80, Color.GRAY);
+          
+          
+        obstacles.add(firstPlatform);
+        obstacles.add(secondPlatform);
+        obstacles.add(firstWall);
+        obstacles.add(secondWall);
+
+        for (Obstacles obstacle : obstacles){
+            obstacle.addToCanvas();
+        }
+        
+         character = new Character(canvasWindow, obstacles);
           character.addToCanvas(canvasWindow);
      }
+  
 
 
 //Methods for logic of score and lives
