@@ -80,13 +80,18 @@ public class Character {
         Rectangle.setPosition(x, y);  
     }
 
-   public void addToCanvas(CanvasWindow canvasWindow) {
+    public void addToCanvas(CanvasWindow canvasWindow) {
         canvasWindow.add(Rectangle);
     }
-
     public Rectangle getRectangle() {
         return Rectangle;
     } 
+    public double getX(){
+        return x;
+    }
+    public double getY(){
+        return y;
+    }
     public void checkCollision(CanvasWindow canvas, List <Obstacles> obstacles){
         GraphicsObject top = canvas.getElementAt(x + 20 , y);
         GraphicsObject bottom = canvas.getElementAt(x + 20 , y + 60);

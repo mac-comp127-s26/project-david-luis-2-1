@@ -28,11 +28,47 @@ private static final Color ENEMY_COLOR = new Color(180,50,50);
         rect.setFillColor(ENEMY_COLOR);
         rect.setFilled(true);
 
-    canvas.animate (dt -> {
+    canvas.animate(dt -> {
         if (!active){
-            
+             this.x += speed * direction * dt;
+        } 
+        
+        if (x >= moveRight){
+            this.x = moveRight; 
+            direction = -1;
+        } 
+        if (x <= moveLeft){
+            this.x = moveLeft;
+            direction = 1;
         }
-    }
+    
+    rect.setPosition(this.x, this.y);
+   });
+}
 
-   }
+    public void addToCanvas(){
+        canvas.add(rect);
+    }
+    public Rectangle getRect(){
+        return rect;
+    }
+    public double getX(){
+        return x;
+    }
+    public double getY(){
+        return y;
+    }
+    public double getWidth(){
+        return width;
+    }
+    public double getHeight(){
+        return height;
+    }
+    public void remove(){
+        active = false;
+        canvas.remove(rect);
+    }
+    public boolean isActive(){
+        return active;
+    }
 }
