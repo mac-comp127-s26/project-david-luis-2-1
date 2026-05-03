@@ -5,7 +5,7 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsText;
 import edu.macalester.graphics.Rectangle;
 
-public class Background{
+public class Background {
     private static final int GROUND_HEIGHT = 100;
     public static final Color SKY_COLOR = new Color(188, 217, 255);
     public static final Color GROUND_COLOR = new Color(122, 181, 107);
@@ -19,15 +19,15 @@ public class Background{
     private GraphicsText timeText;
     private GraphicsText livesText;
 
-    public Background(CanvasWindow canvas){
+    public Background(CanvasWindow canvas) {
         this.canvas = canvas;
         createBackground();
         createHUD();
         runTimer();
     }
-   
+
     private void createHUD() {
-        scoreText = new GraphicsText("Score: " + score, 10,25);
+        scoreText = new GraphicsText("Score: " + score, 10, 25);
         scoreText.setFontSize(20);
         canvas.add(scoreText);
 
@@ -35,16 +35,16 @@ public class Background{
         timeText.setFontSize(20);
         canvas.add(timeText);
 
-        livesText = new GraphicsText("Lives x" + lives, canvas.getWidth() - 110,25);
+        livesText = new GraphicsText("Lives x" + lives, canvas.getWidth() - 110, 25);
         livesText.setFontSize(20);
         canvas.add(livesText);
     }
 
     private void runTimer() {
-        final double [] elapsed = {0};
-        canvas.animate ((dt) -> {
+        final double[] elapsed = { 0 };
+        canvas.animate((dt) -> {
             elapsed[0] += dt;
-            if (elapsed [0] >= 1.0 && time > 0){
+            if (elapsed[0] >= 1.0 && time > 0) {
                 time--;
                 elapsed[0] = 0;
                 timeText.setText("Time: " + time);
@@ -57,7 +57,7 @@ public class Background{
         scoreText.setText("Score: " + score);
     }
 
-    public void updateLives (int newLives){
+    public void updateLives(int newLives) {
         lives = newLives;
         livesText.setText("Lives x" + lives);
     }
@@ -77,7 +77,7 @@ public class Background{
         canvas.add(ground);
     }
 
-    public int getTime(){
+    public int getTime() {
         return time;
     }
 }
