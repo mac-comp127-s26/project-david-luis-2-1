@@ -19,6 +19,11 @@ public class Background {
     private GraphicsText timeText;
     private GraphicsText livesText;
 
+    public void stopTimer(){
+        time = 0;
+        timeText.setText("Time: " + time);
+    }
+
     public Background(CanvasWindow canvas) {
         this.canvas = canvas;
         createBackground();

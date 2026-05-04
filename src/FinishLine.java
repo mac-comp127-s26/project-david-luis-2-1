@@ -15,9 +15,9 @@ public class FinishLine {
     }
 
     private void createFlag(){
-        flag = new Image(canvas.getWidth() - 150, 420, "flag.png");
-        flag.setMaxWidth(50);
-        flag.setMaxHeight(80);
+        flag = new Image(canvas.getWidth() - 150, 397, "flag_transparent.png");
+        flag.setMaxWidth(80);
+        flag.setMaxHeight(120);
         canvas.add(flag);
     }
 
@@ -37,6 +37,7 @@ public class FinishLine {
     public void levelComplete() {
         int score = background.getTime() * 50;
         background.updateScore(score);
+        background.stopTimer();
     }
 
     public void winScreen(){
