@@ -1,10 +1,14 @@
 import java.awt.Color;
 
 import edu.macalester.graphics.CanvasWindow;
+import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Rectangle;
 
 public class Enemy {
-    private Rectangle rect;
+    private Image currentSprite;
+    private Image leftSprite;
+    private Image rightSprite;
+    // private Rectangle rect;
     private CanvasWindow canvas;
     private double x;
     private double y;
@@ -24,34 +28,57 @@ public class Enemy {
         this.y = y;
         this.moveLeft = moveLeft;
         this.moveRight = moveRight;
-        this.rect = new Rectangle(x, y, width, height);
-        rect.setFillColor(ENEMY_COLOR);
-        rect.setFilled(true);
+        // this.rect = new Rectangle(x, y, width, height);
+        // rect.setFillColor(ENEMY_COLOR);
+        // rect.setFilled(true);
+
+        Image spriteLeft = new Image("left_tung.png");
+        Image spriteRight = new Image("right_tung.png");
+
+        spriteLeft.setMaxWidth(width);
+        spriteLeft.setMaxHeight(height);
+        spriteRight.setMaxWidth(width);
+        spriteRight.setMaxHeight(height);
+
+        currentSprite = spriteRight;
+        currentSprite.setPosition(x, y);
+
 
         canvas.animate(dt -> {
-            if (!active) return;
-                this.x += speed * direction * dt;
-            
+            if (!active)
+                return;
+
+            this.x += speed * direction * dt;
 
             if (x >= moveRight) {
                 this.x = moveRight;
                 direction = -1;
+                updateSprite(spriteLeft);
             }
             if (x <= moveLeft) {
                 this.x = moveLeft;
                 direction = 1;
+                updateSprite(spriteRight);
             }
 
-            rect.setPosition(this.x, this.y);
+            currentSprite.setPosition(this.x, this.y);
         });
     }
 
-    public void addToCanvas() {
-        canvas.add(rect);
+    private void updateSprite(Image newSprite) {
+        if (newSprite != currentSprite) {
+            canvas.remove(currentSprite);
+            canvas.add(newSprite);
+            currentSprite = newSprite;
+        }
     }
 
-    public Rectangle getRect() {
-        return rect;
+    public void addToCanvas() {
+        canvas.add(currentSprite);
+    }
+
+    public Image getSprite() {
+        return currentSprite;
     }
 
     public double getX() {
@@ -72,13 +99,12 @@ public class Enemy {
 
     public void remove() {
         active = false;
-        canvas.remove(rect);
+        canvas.remove(currentSprite);
     }
 
     public boolean isActive() {
         return active;
     }
-    public void setOffsetX(double offSetX){
-        rect.setPosition(this.x + offSetX, this.y);
-    }
+
 }
+    

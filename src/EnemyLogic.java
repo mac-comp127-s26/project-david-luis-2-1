@@ -39,6 +39,7 @@ public class EnemyLogic {
         GraphicsObject left = canvas.getElementAt(character.getX(), character.getY() + 30);
         GraphicsObject right = canvas.getElementAt(character.getX() + 40, character.getY() + 30);
 
+
         List<Enemy> removed = new ArrayList<>();
 
 
@@ -47,12 +48,12 @@ public class EnemyLogic {
             if (!enemy.isActive())
                 continue;
 
-            if (bottom == enemy.getRect()) {
+            if (bottom == enemy.getSprite()) {
                 enemy.remove();
                 score += 100;
                 background.updateScore(score);
             }
-            if (!hitCooldown && (left == enemy.getRect() || right == enemy.getRect())) {
+            if (!hitCooldown && (left == enemy.getSprite() || right == enemy.getSprite())) {
                 enemy.remove();
                 loseLife();
                 hitCooldown = true;
