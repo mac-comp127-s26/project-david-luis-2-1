@@ -29,9 +29,9 @@ public class Enemy {
         rect.setFilled(true);
 
         canvas.animate(dt -> {
-            if (!active) {
+            if (!active) return;
                 this.x += speed * direction * dt;
-            }
+            
 
             if (x >= moveRight) {
                 this.x = moveRight;

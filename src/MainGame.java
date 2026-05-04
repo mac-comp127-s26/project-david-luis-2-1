@@ -12,6 +12,7 @@ public class MainGame {
     private CanvasWindow canvasWindow;
     private List<Obstacles> obstacles = new ArrayList<>();
     private List<Enemy> enemies = new ArrayList<>();
+    private double cameraX = 0;
     private EnemyLogic enemyLogic;
 
     public MainGame() {
@@ -46,6 +47,7 @@ public class MainGame {
 
         character = new Character(canvasWindow, obstacles);
         character.addToCanvas(canvasWindow);
+
 
         enemyLogic = new EnemyLogic(canvasWindow, character, background, enemies);
 
