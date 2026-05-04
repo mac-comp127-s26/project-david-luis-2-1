@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.macalester.graphics.CanvasWindow;
+import edu.macalester.graphics.Image;
 
 public class MainGame {
     private static final int CANVAS_HEIGHT = 600;
@@ -14,6 +15,7 @@ public class MainGame {
     private List<Enemy> enemies = new ArrayList<>();
     private double cameraX = 0;
     private EnemyLogic enemyLogic;
+    private FinishLine finishLine;
 
     public MainGame() {
         canvasWindow = new CanvasWindow("Carti Platformer", CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -42,6 +44,11 @@ public class MainGame {
 
         for (Enemy ememy : enemies) {
             ememy.addToCanvas();
+
+        finishLine = new FinishLine(canvasWindow, background);
+        canvasWindow.animate(dt -> {
+            finishLine.checkFlagCollision(character);
+            });
         }
 
 
