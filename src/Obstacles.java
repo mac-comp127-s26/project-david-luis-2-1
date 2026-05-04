@@ -45,5 +45,8 @@ public class Obstacles {
     public double getHeight() {
         return height;
     }
+    public void setOffsetX(double offsetX){
+        rect.setPosition(x + offsetX, y);
+    }
 }
 

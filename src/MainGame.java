@@ -45,10 +45,22 @@ public class MainGame {
         for (Enemy ememy : enemies) {
             ememy.addToCanvas();
 
+
         finishLine = new FinishLine(canvasWindow, background);
+
         canvasWindow.animate(dt -> {
-            finishLine.checkFlagCollision(character);
-            });
+            double targetCameraX = character.getNaturalX() - 300;
+            cameraX = targetCameraX;
+            background.setOffsetX(-cameraX);
+
+        for (Obstacles obs : obstacles){
+            obs.setOffsetX(-cameraX);
+        }
+        for (Enemy enm : enemies){
+            enm.setOffsetX(-cameraX);
+        }
+        finishLine.checkFlagCollision(character);
+        });
         }
 
 
@@ -69,6 +81,7 @@ public class MainGame {
         int bonus = background.getTime() * 50;
 
     }
+
 
 
 }

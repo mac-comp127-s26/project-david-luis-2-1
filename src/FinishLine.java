@@ -22,7 +22,7 @@ public class FinishLine {
     }
 
     public void checkFlagCollision (Character character){
-        if (!gameWon && flag.getBounds().intersects(character.getRectangle().getBounds())) {
+        if (!gameWon && flag.getBounds().intersects(character.getCharacter().getBounds())) {
             gameWon = true;
             levelComplete();
             winScreen();

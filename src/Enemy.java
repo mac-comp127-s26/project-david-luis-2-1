@@ -78,4 +78,7 @@ public class Enemy {
     public boolean isActive() {
         return active;
     }
+    public void setOffsetX(double offSetX){
+        rect.setPosition(this.x + offSetX, this.y);
+    }
 }

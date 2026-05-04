@@ -76,14 +76,23 @@ public class Character {
             x += rateX * dt;
 
             checkCollision(canvas, obstacles);
+            
 
             if (y >= FlOOR_Y) {
                 y = FlOOR_Y;
                 rateY = 0;
                 onGround = true;
             }
+
+            if (x < 0){
+                x = 0;
+            }
+            if (x > 1800){
+                x = 1800;
+            }
+
             updateCharacter();
-            currentCharacter.setPosition(x, y);
+            currentCharacter.setPosition(300, y);
         });
     }
 
@@ -118,6 +127,10 @@ public class Character {
 
     public Image getCharacter(){
         return currentCharacter;
+    }
+
+    public double getNaturalX(){
+        return x;
     }
 
     public void checkCollision(CanvasWindow canvas, List<Obstacles> obstacles) {
