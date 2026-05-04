@@ -6,7 +6,7 @@ import edu.macalester.graphics.CanvasWindow;
 
 public class MainGame {
     private static final int CANVAS_HEIGHT = 600;
-    private static final int CANVAS_WIDTH = 600;
+    private static final int CANVAS_WIDTH = 2000;
     private Character character;
     private Background background;
     private CanvasWindow canvasWindow;
@@ -15,7 +15,7 @@ public class MainGame {
     private EnemyLogic enemyLogic;
 
     public MainGame() {
-        canvasWindow = new CanvasWindow("HI", CANVAS_WIDTH, CANVAS_HEIGHT);
+        canvasWindow = new CanvasWindow("Carti Platformer", CANVAS_WIDTH, CANVAS_HEIGHT);
         background = new Background(canvasWindow);
 
         Obstacles firstPlatform = new Obstacles(canvasWindow, 150, 350, 120, 20, Color.ORANGE);
