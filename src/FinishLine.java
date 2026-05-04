@@ -21,17 +21,22 @@ public class FinishLine {
         canvas.add(flag);
     }
 
-    public void checkFlagCollision (Character character){
-        if (!gameWon && flag.getBounds().intersects(character.getCharacter().getBounds())) {
-            gameWon = true;
-            levelComplete();
-            winScreen();
-        }
+    public void checkFlagCollision(Character character) {
+    if (!gameWon 
+        && character.getX() >= flag.getX() - 50
+        && character.getX() <= flag.getX() + flag.getWidth() + 50
+        && character.getY() >= flag.getY() - 100
+        && character.getY() <= flag.getY() + flag.getHeight() + 50) {
+        gameWon = true;
+        levelComplete();
+        winScreen();
     }
+}
+
 
     public void levelComplete() {
         int score = background.getTime() * 50;
-        background.updateLives(score);
+        background.updateScore(score);
     }
 
     public void winScreen(){
@@ -45,3 +50,4 @@ public class FinishLine {
     }
     
 }
+
