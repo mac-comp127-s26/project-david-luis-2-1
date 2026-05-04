@@ -44,9 +44,14 @@ public class MainGame {
 
         for (Enemy ememy : enemies) {
             ememy.addToCanvas();
-
+        }
 
         finishLine = new FinishLine(canvasWindow, background);
+
+        character = new Character(canvasWindow, obstacles,finishLine);
+        character.addToCanvas(canvasWindow);
+
+        enemyLogic = new EnemyLogic(canvasWindow, character, background, enemies);
 
         canvasWindow.animate(dt -> {
             double targetCameraX = character.getNaturalX() - 300;
@@ -59,19 +64,11 @@ public class MainGame {
         for (Enemy enm : enemies){
             enm.setOffsetX(-cameraX);
         }
+        finishLine.setOffsetX(-cameraX);
         finishLine.checkFlagCollision(character);
         });
-        }
-
-
-        character = new Character(canvasWindow, obstacles);
-        character.addToCanvas(canvasWindow);
-
-
-        enemyLogic = new EnemyLogic(canvasWindow, character, background, enemies);
-
-
     }
+
 
     public static void main(String[] args) {
         new MainGame();
@@ -81,7 +78,6 @@ public class MainGame {
         int bonus = background.getTime() * 50;
 
     }
-
 
 
 }

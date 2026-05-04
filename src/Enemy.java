@@ -2,19 +2,19 @@ import java.awt.Color;
 
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
-import edu.macalester.graphics.Rectangle;
+
 
 public class Enemy {
     private Image currentSprite;
     private Image leftSprite;
     private Image rightSprite;
-    // private Rectangle rect;
+   
     private CanvasWindow canvas;
     private double x;
     private double y;
     private double width = 40;
-    private double height = 60;
-    private double speed = 100;
+    private double height = 80;
+    private double speed = 120;
     private double direction = 1;
     private double moveLeft;
     private double moveRight;
@@ -28,17 +28,15 @@ public class Enemy {
         this.y = y;
         this.moveLeft = moveLeft;
         this.moveRight = moveRight;
-        // this.rect = new Rectangle(x, y, width, height);
-        // rect.setFillColor(ENEMY_COLOR);
-        // rect.setFilled(true);
+
 
         Image spriteLeft = new Image("left_tung.png");
         Image spriteRight = new Image("right_tung.png");
 
-        spriteLeft.setMaxWidth(width);
-        spriteLeft.setMaxHeight(height);
-        spriteRight.setMaxWidth(width);
-        spriteRight.setMaxHeight(height);
+        spriteLeft.setMaxWidth(80);
+        spriteLeft.setMaxHeight(120);
+        spriteRight.setMaxWidth(80);
+        spriteRight.setMaxHeight(120);
 
         currentSprite = spriteRight;
         currentSprite.setPosition(x, y);
@@ -104,6 +102,9 @@ public class Enemy {
 
     public boolean isActive() {
         return active;
+    }
+    public void setOffsetX(double offsetX){
+        currentSprite.setPosition(this.x + offsetX, this.y);
     }
 
 }

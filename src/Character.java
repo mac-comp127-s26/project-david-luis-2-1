@@ -20,6 +20,7 @@ public class Character {
     private boolean leftMovement = false;
     private boolean rightMovement = false;
     private List<Obstacles> obstacles;
+    private FinishLine finishLine;
 
     private static final double JUMP_POWER = -400;
     private static final double GRAVITY = 800;
@@ -27,9 +28,10 @@ public class Character {
     private static final double MOVE_SPEED = 180;
 
 
-    public Character(CanvasWindow canvas, List<Obstacles> obstacles) {
+    public Character(CanvasWindow canvas, List<Obstacles> obstacles, FinishLine finishLine) {
         this.obstacles = obstacles;
         this.canvas = canvas;
+        this.finishLine = finishLine;
 
         walkLeft = new Image("walk_left_frame1.png");
         walkRight = new Image("walk_right_frame1.png");
@@ -62,6 +64,9 @@ public class Character {
         });
 
         canvas.animate(dt -> {
+            if (finishLine.gameWin()) 
+                return;
+            
             if (leftMovement) {
                 rateX = -MOVE_SPEED;
             } else if (rightMovement) {
@@ -87,8 +92,8 @@ public class Character {
             if (x < 0){
                 x = 0;
             }
-            if (x > 1800){
-                x = 1800;
+            if (x > 1700){
+                x = 1700;
             }
 
             updateCharacter();
