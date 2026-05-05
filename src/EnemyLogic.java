@@ -35,33 +35,43 @@ public class EnemyLogic {
     }
 
     private void checkOpponenetCollision() {
-        GraphicsObject bottom = canvas.getElementAt(character.getX() + 20, character.getY() + 60);
-        GraphicsObject left = canvas.getElementAt(character.getX(), character.getY() + 30);
-        GraphicsObject right = canvas.getElementAt(character.getX() + 40, character.getY() + 30);
-
-
-        List<Enemy> removed = new ArrayList<>();
+        double charLeft   = character.getNaturalX() + 15;
+        double charRight  = character.getNaturalX() + 65;
+        double charTop    = character.getY() + 40;
+        double charBottom = character.getY() + 127;
 
 
         for (int i = opponenets.size() - 1; i >= 0; i--) {
             Enemy enemy = opponenets.get(i);
             if (!enemy.isActive())
                 continue;
+        double enemyLeft   = enemy.getX() + 10;
+        double enemyRight  = enemy.getX() + enemy.getWidth() - 10;
+        double enemyTop    = enemy.getY() + 10;
+        double enemyBottom = enemy.getY() + enemy.getHeight();
 
-            if (bottom == enemy.getSprite()) {
-                enemy.remove();
-                score += 100;
-                background.updateScore(score);
-            }
-            if (!hitCooldown && (left == enemy.getSprite() || right == enemy.getSprite())) {
-                enemy.remove();
-                loseLife();
-                hitCooldown = true;
-                contactTimer = HIT_COOLDOWN_TIME;
+        boolean overlapping = charRight  > enemyLeft &&
+                              charLeft   < enemyRight &&
+                              charBottom > enemyTop &&
+                              charTop    < enemyBottom;
 
-            }
+        if (!overlapping) continue;
+
+        double overlapTop   = charBottom - enemyTop;
+        double overlapLeft  = charRight  - enemyLeft;
+        double overlapRight = enemyRight - charLeft;
+        if (overlapTop < overlapLeft && overlapTop < overlapRight) {
+            enemy.remove();
+            score += 100;
+            background.updateScore(score);
+        } else if (!hitCooldown) {
+            enemy.remove();
+            loseLife();
+            hitCooldown = true;
+            contactTimer = HIT_COOLDOWN_TIME;
         }
     }
+}
 
     public void loseLife() {
         if (lives > 0) {

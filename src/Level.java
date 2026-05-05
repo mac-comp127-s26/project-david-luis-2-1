@@ -5,9 +5,11 @@ import edu.macalester.graphics.CanvasWindow;
 
 public class Level {
     private static final int GROUND = 500;
+    private static final int ENEMY_Y = GROUND - 85;
     private static final Color BRICK = new Color (180,100,40);
     private static final Color PIPE = new Color(50,180,50);
     private static final Color PIPE_TOP  = new Color (30,160,30);
+    
 
     private List <Obstacles> obstacles;
     private List <Enemy> enemies;
@@ -26,15 +28,15 @@ public class Level {
 
         brick(380, GROUND - 160, 120, 20); 
 
-        enemy(310, GROUND - 120, 260, 370);
+        enemy(310, ENEMY_Y, 260, 370);
 
    
         pipe(680, GROUND - 60, 60);       
 
         brick(820, GROUND - 180, 120, 20); 
 
-        enemy(750, GROUND - 120, 690, 810);
-        enemy(900, GROUND - 120, 830, 950);
+        enemy(750, ENEMY_Y, 690, 810);
+        
 
     
         pipe(1150, GROUND - 70, 70);      
@@ -45,17 +47,14 @@ public class Level {
         brick(1420, GROUND - 180, 60, 20);
         brick(1480, GROUND - 240, 60, 20);
 
-        enemy(1220, GROUND - 120, 1160, 1290);
-        enemy(1420, GROUND - 120, 1360, 1480);
-
      
         pipe(1650, GROUND - 60, 60);       
         pipe(1900, GROUND - 70, 70);        
 
         brick(1780, GROUND - 180, 100, 20); 
 
-        enemy(1720, GROUND - 120, 1660, 1770);
-        enemy(1850, GROUND - 120, 1790, 1890);
+      
+        enemy(1850, ENEMY_Y, 1790, 1890);
 
      
         pipe(2080, GROUND - 60, 60);       
@@ -64,8 +63,8 @@ public class Level {
 
         pipe(2400, GROUND - 70, 70);        
 
-        enemy(2150, GROUND - 120, 2090, 2210);
-        enemy(2320, GROUND - 120, 2260, 2390);
+       
+        enemy(2320, ENEMY_Y, 2260, 2390);
 
       
         pipe(2550, GROUND - 60, 60);        
@@ -76,8 +75,8 @@ public class Level {
         brick(2780, GROUND - 180, 60, 20);
         brick(2840, GROUND - 240,  60, 20);
 
-        enemy(2610, GROUND - 120, 2560, 2650);
-        enemy(2760, GROUND - 120, 2700, 2840);
+        
+        enemy(2760, ENEMY_Y, 2700, 2840);
 
         pipe(2980, GROUND - 60, 60);
 
@@ -86,6 +85,8 @@ public class Level {
 
         pipe(3300, GROUND - 70, 70);
 
+
+
         brick(3420, GROUND - 60,  60, 20);
         brick(3480, GROUND - 120, 60, 20);
         brick(3540, GROUND - 180, 60, 20);
@@ -93,8 +94,10 @@ public class Level {
 
         pipe(3680, GROUND - 60, 60);
 
-        enemy(3680, GROUND - 120, 3660, 3710); 
-        enemy(3760, GROUND - 120, 3730, 3790); 
+       
+        enemy(3760, ENEMY_Y, 3730, 3790); 
+
+       enemy(3800, ENEMY_Y, 3685, 3845);
     }
 
 private void pipe(double x, double y , double height) {
@@ -110,7 +113,7 @@ private void brick(double x , double y , double width, double height){
 }
 
 private void enemy(double x , double y , double moveLeft, double moveRight){
-    Enemy e  = new Enemy(canvas, x, y, moveLeft, moveRight);
+    Enemy e  = new Enemy(canvas, x, y, moveLeft, moveRight,obstacles);
     enemies.add(e);
 }
 

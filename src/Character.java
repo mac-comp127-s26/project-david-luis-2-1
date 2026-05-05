@@ -14,7 +14,7 @@ public class Character {
     private Image jump;
     private CanvasWindow canvas;
     private double x = 30;
-    private double y = 373;
+    private double y = 385;
     private double rateX = 0;
     private double rateY = 0;
     private double cameraX = 0;
@@ -26,7 +26,7 @@ public class Character {
 
     private static final double JUMP_POWER = -450;
     private static final double GRAVITY = 800;
-    private static final double FlOOR_Y = 373;
+    private static final double FlOOR_Y = 385;
     private static final double MOVE_SPEED = 180;
 
 
@@ -74,7 +74,7 @@ public class Character {
             } else if (rightMovement) {
                 rateX = MOVE_SPEED;
             } else {
-                rateX *= 0;
+                rateX = 0;
             }
 
 
@@ -86,7 +86,7 @@ public class Character {
             checkCollision(canvas, obstacles);
             
 
-            if (y >= FlOOR_Y) {
+            if (!onGround && y >= FlOOR_Y) {
                 y = FlOOR_Y;
                 rateY = 0;
                 onGround = true;
@@ -167,24 +167,28 @@ public class Character {
             
            if (!overlapping) continue;
 
-        double overlapTop    = figureBottom - obsTop;
-        double overlapBottom = obsBottom  - figureTop;
-        double overlapLeft   = figureRight  - obsLeft;
-        double overlapRight  = obsRight   - figureLeft;
+        double overLapTop    = figureBottom - obsTop;
+        double overLapBottom = obsBottom  - figureTop;
+        double overLapLeft   = figureRight  - obsLeft;
+        double overLapRight  = obsRight   - figureLeft;
 
-        double minOverLap = Math.min(Math.min(overlapTop , overlapBottom), Math.min(overlapLeft,overlapRight));
-
-        if(minOverLap == overlapTop && rateY >= 0) {
-            y = obsTop - 127;
+         if (overLapTop <= 40 && rateY >= 0) {
+            y = obsTop - 115;
             rateY = 0;
             onGround = true;
-        } else if (minOverLap == overlapBottom && rateY < 0) {
+            continue;
+        }
+        if (overLapBottom <= 20 && rateY < 0) {
             y = obsBottom - 5;
             rateY = 0;
-        } else if (minOverLap == overlapLeft && rateX > 0) {
+            continue;
+        }
+
+        double minOverLap = Math.min(Math.min(overLapTop , overLapBottom), Math.min(overLapLeft,overLapRight));
+        if (minOverLap == overLapLeft && rateX > 0) {
             x = obsLeft - 65;
             rateX = 0;
-        } else if (minOverLap == overlapRight && rateX < 0) {
+        } else if (minOverLap == overLapRight && rateX < 0) {
             x = obsRight - 15;
             rateX = 0;
         }
