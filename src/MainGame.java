@@ -7,8 +7,8 @@ import edu.macalester.graphics.Image;
 
 public class MainGame {
     private static final int CANVAS_HEIGHT = 600;
-    private static final int CANVAS_WIDTH = 2000;
-    private static final int LEVEL_WIDTH = 4318;
+    private static final int CANVAS_WIDTH = 1700;
+    private static final int LEVEL_WIDTH = 4300;
     private Character character;
     private Background background;
     private CanvasWindow canvasWindow;
