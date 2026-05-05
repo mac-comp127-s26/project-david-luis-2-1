@@ -78,6 +78,4 @@ public class MainGame {
         int bonus = background.getTime() * 50;
 
     }
-
-
 }
