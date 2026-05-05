@@ -95,12 +95,12 @@ public class Character {
             if (x < 0){
                 x = 0;
             }
-            if (x > 3850){
-                x = 3850;
+            if (x > 4200){
+                x = 4200;
             }
 
             updateCharacter();
-            currentCharacter.setPosition(300, y);
+            currentCharacter.setPosition(x-cameraX, y);
         });
     }
 

@@ -72,14 +72,14 @@ public class Background {
     }
 
     public void createBackground() {
-        sky = new Rectangle(0, 0, 4000, canvas.getHeight());
+        sky = new Rectangle(0, 0, 4318, canvas.getHeight());
         sky.setFillColor(SKY_COLOR);
         sky.setFilled(true);
         canvas.add(sky);
 
         ground = new Rectangle(
             0, canvas.getHeight() - GROUND_HEIGHT,
-            4000, GROUND_HEIGHT);
+            4318, GROUND_HEIGHT);
         ground.setFilled(true);
         ground.setFillColor(GROUND_COLOR);
         ground.setStroked(false);

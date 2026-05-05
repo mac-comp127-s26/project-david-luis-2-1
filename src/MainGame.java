@@ -7,7 +7,8 @@ import edu.macalester.graphics.Image;
 
 public class MainGame {
     private static final int CANVAS_HEIGHT = 600;
-    private static final int CANVAS_WIDTH = 4000;
+    private static final int CANVAS_WIDTH = 2000;
+    private static final int LEVEL_WIDTH = 4318;
     private Character character;
     private Background background;
     private CanvasWindow canvasWindow;
@@ -39,6 +40,8 @@ public class MainGame {
 
         canvasWindow.animate(dt -> {
             double targetCameraX = character.getNaturalX() - 300;
+              targetCameraX = Math.max(0, targetCameraX);
+            targetCameraX = Math.min(LEVEL_WIDTH - CANVAS_WIDTH, targetCameraX);
             cameraX = targetCameraX;
             character.setCameraX(targetCameraX);
             background.setOffsetX(-cameraX);

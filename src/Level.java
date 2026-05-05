@@ -97,7 +97,8 @@ public class Level {
        
         enemy(3760, ENEMY_Y, 3730, 3790); 
 
-       enemy(3800, ENEMY_Y, 3685, 3845);
+       enemy(3850, ENEMY_Y, 3800, 3950);
+        enemy(3920, ENEMY_Y, 3870, 4020);
     }
 
 private void pipe(double x, double y , double height) {
