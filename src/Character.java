@@ -35,8 +35,8 @@ public class Character {
         this.canvas = canvas;
         this.finishLine = finishLine;
 
-        walkLeft = new Image("walk_left_frame1.png");
-        walkRight = new Image("walk_right_frame1.png");
+        walkLeft = new Image("walk_right_frame1.png");
+        walkRight = new Image("walk_left_frame1.png");
         jump = new Image ("jump.png");
 
         currentCharacter = walkRight;
