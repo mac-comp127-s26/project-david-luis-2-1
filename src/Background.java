@@ -72,14 +72,14 @@ public class Background {
     }
 
     public void createBackground() {
-        sky = new Rectangle(0, 0, canvas.getWidth() * 10, canvas.getHeight());
+        sky = new Rectangle(0, 0, 4000, canvas.getHeight());
         sky.setFillColor(SKY_COLOR);
         sky.setFilled(true);
         canvas.add(sky);
 
         ground = new Rectangle(
             0, canvas.getHeight() - GROUND_HEIGHT,
-            canvas.getWidth() * 10, GROUND_HEIGHT);
+            4000, GROUND_HEIGHT);
         ground.setFilled(true);
         ground.setFillColor(GROUND_COLOR);
         ground.setStroked(false);
@@ -90,8 +90,8 @@ public class Background {
         return time;
     }
     public void setOffsetX (double offsetX){
-        sky.setPosition(offsetX,0);
-        ground.setPosition(offsetX,canvas.getHeight() - GROUND_HEIGHT);
+        sky.setPosition(0,0);
+        ground.setPosition(offsetX, canvas.getHeight() - GROUND_HEIGHT);
     }
 
 }

@@ -7,7 +7,7 @@ import edu.macalester.graphics.Image;
 
 public class MainGame {
     private static final int CANVAS_HEIGHT = 600;
-    private static final int CANVAS_WIDTH = 2000;
+    private static final int CANVAS_WIDTH = 4000;
     private Character character;
     private Background background;
     private CanvasWindow canvasWindow;
@@ -21,33 +21,17 @@ public class MainGame {
         canvasWindow = new CanvasWindow("Carti Platformer", CANVAS_WIDTH, CANVAS_HEIGHT);
         background = new Background(canvasWindow);
 
-        Obstacles firstPlatform = new Obstacles(canvasWindow, 150, 350, 120, 20, Color.ORANGE);
-        Obstacles secondPlatform = new Obstacles(canvasWindow, 380, 280, 120, 20, Color.ORANGE);
-        Obstacles firstWall = new Obstacles(canvasWindow, 300, 420, 20, 80, Color.GRAY);
-        Obstacles secondWall = new Obstacles(canvasWindow, 500, 420, 20, 80, Color.GRAY);
-
-
-        obstacles.add(firstPlatform);
-        obstacles.add(secondPlatform);
-        obstacles.add(firstWall);
-        obstacles.add(secondWall);
+        Level level = new Level(canvasWindow, obstacles, enemies);
 
         for (Obstacles obstacle : obstacles) {
             obstacle.addToCanvas();
         }
-
-        Enemy firstEnemy = new Enemy(canvasWindow, 200, 440, 150, 350);
-        Enemy secondEnemy = new Enemy(canvasWindow, 450, 440, 380, 550);
-
-        enemies.add(firstEnemy);
-        enemies.add(secondEnemy);
 
         for (Enemy ememy : enemies) {
             ememy.addToCanvas();
         }
 
         finishLine = new FinishLine(canvasWindow, background);
-
         character = new Character(canvasWindow, obstacles,finishLine);
         character.addToCanvas(canvasWindow);
 
@@ -56,6 +40,7 @@ public class MainGame {
         canvasWindow.animate(dt -> {
             double targetCameraX = character.getNaturalX() - 300;
             cameraX = targetCameraX;
+            character.setCameraX(targetCameraX);
             background.setOffsetX(-cameraX);
 
         for (Obstacles obs : obstacles){
@@ -67,15 +52,13 @@ public class MainGame {
         finishLine.setOffsetX(-cameraX);
         finishLine.checkFlagCollision(character);
         });
-    }
 
+
+    }
 
     public static void main(String[] args) {
         new MainGame();
     }
 
-    private void levelComplete() {
-        int bonus = background.getTime() * 50;
 
-    }
 }

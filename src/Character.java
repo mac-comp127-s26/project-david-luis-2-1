@@ -1,4 +1,5 @@
 
+import edu.macalester.graphics.Rectangle;
 import java.util.List;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.CanvasWindow;
@@ -16,15 +17,16 @@ public class Character {
     private double y = 373;
     private double rateX = 0;
     private double rateY = 0;
+    private double cameraX = 0;
     private boolean onGround = true;
     private boolean leftMovement = false;
     private boolean rightMovement = false;
     private List<Obstacles> obstacles;
     private FinishLine finishLine;
 
-    private static final double JUMP_POWER = -400;
+    private static final double JUMP_POWER = -450;
     private static final double GRAVITY = 800;
-    private static final double FlOOR_Y = 385;
+    private static final double FlOOR_Y = 373;
     private static final double MOVE_SPEED = 180;
 
 
@@ -80,6 +82,7 @@ public class Character {
             y += rateY * dt;
             x += rateX * dt;
 
+            onGround = false;
             checkCollision(canvas, obstacles);
             
 
@@ -92,8 +95,8 @@ public class Character {
             if (x < 0){
                 x = 0;
             }
-            if (x > 1700){
-                x = 1700;
+            if (x > 3850){
+                x = 3850;
             }
 
             updateCharacter();
@@ -137,31 +140,57 @@ public class Character {
     public double getNaturalX(){
         return x;
     }
+    public void setCameraX(double cameraX){
+        this.cameraX = cameraX;
+    }
 
     public void checkCollision(CanvasWindow canvas, List<Obstacles> obstacles) {
-        GraphicsObject top = canvas.getElementAt(x + 40, y);
-        GraphicsObject bottom = canvas.getElementAt(x + 40, y + 127);
-        GraphicsObject left = canvas.getElementAt(x + 10, y + 64);
-        GraphicsObject right = canvas.getElementAt(x + 70, y + 64);
+
+
+        double figureLeft = x + 15;
+        double figureRight = x + 65;
+        double figureTop = y + 5;
+        double figureBottom = y + 127;
+        
 
         for (Obstacles obst : obstacles) {
-            if (bottom == obst.getRect() && rateY >= 0) {
-                y = obst.getY() - 127;
-                rateY = 0;
-                onGround = true;
-            }
-            if (right == obst.getRect()) {
-                x = obst.getX() - 80;
-                rateX = 0;
-            }
-            if (left == obst.getRect()) {
-                x = obst.getX() + obst.getWidth();
-                rateX = 0;
-            }
-            if (top == obst.getRect() && rateY < 0) {
-                x = obst.getX() + obst.getWidth();
-                rateY = 0;
-            }
+        double obsLeft = obst.getX();
+        double obsRight = obst.getX() + obst.getWidth();
+        double obsTop = obst.getY();
+        double obsBottom = obst.getY() + obst.getHeight();
+
+           boolean overlapping = 
+           figureRight > obsLeft &&
+           figureLeft < obsRight && 
+           figureBottom > obsTop &&
+           figureTop < obsBottom;
+            
+           if (!overlapping) continue;
+
+        double overlapTop    = figureBottom - obsTop;
+        double overlapBottom = obsBottom  - figureTop;
+        double overlapLeft   = figureRight  - obsLeft;
+        double overlapRight  = obsRight   - figureLeft;
+
+        double minOverLap = Math.min(Math.min(overlapTop , overlapBottom), Math.min(overlapLeft,overlapRight));
+
+        if(minOverLap == overlapTop && rateY >= 0) {
+            y = obsTop - 127;
+            rateY = 0;
+            onGround = true;
+        } else if (minOverLap == overlapBottom && rateY < 0) {
+            y = obsBottom - 5;
+            rateY = 0;
+        } else if (minOverLap == overlapLeft && rateX > 0) {
+            x = obsLeft - 65;
+            rateX = 0;
+        } else if (minOverLap == overlapRight && rateX < 0) {
+            x = obsRight - 15;
+            rateX = 0;
         }
+        
+        }
+
     }
+
 }

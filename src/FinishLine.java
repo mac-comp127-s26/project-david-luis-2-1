@@ -21,7 +21,7 @@ public class FinishLine {
     }
 
     private void createFlag(){
-        x = 1700;
+        x = 3850;
         y = 397;
         flag = new Image(x,y, "Flag.png");
         flag.setMaxWidth(80);
@@ -40,7 +40,7 @@ public class FinishLine {
     }
 
     public void checkFlagCollision(Character character) {
-    if (!gameWon && character.getNaturalX() >= x -50){
+    if (!gameWon && character.getNaturalX() >= x - 50){
         gameWon = true;
         levelComplete();
         winScreen();
