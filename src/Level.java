@@ -97,8 +97,9 @@ public class Level {
        
         enemy(3760, ENEMY_Y, 3730, 3790); 
 
-       enemy(3850, ENEMY_Y, 3800, 3950);
-        enemy(3920, ENEMY_Y, 3870, 4020);
+       enemy(3850, ENEMY_Y, 3800, 3900);
+
+        enemy(3950, ENEMY_Y, 3910, 4020);
     }
 
 private void pipe(double x, double y , double height) {
@@ -114,7 +115,7 @@ private void brick(double x , double y , double width, double height){
 }
 
 private void enemy(double x , double y , double moveLeft, double moveRight){
-    Enemy e  = new Enemy(canvas, x, y, moveLeft, moveRight,obstacles);
+    Enemy e  = new Enemy(canvas, x, y, moveLeft, moveRight, obstacles);
     enemies.add(e);
 }
 
