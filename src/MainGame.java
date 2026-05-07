@@ -20,7 +20,23 @@ public class MainGame {
 
     public MainGame() {
         canvasWindow = new CanvasWindow("Carti Platformer", CANVAS_WIDTH, CANVAS_HEIGHT);
-        setupGame();
+        background = new Background(canvasWindow);
+
+        Level level = new Level(canvasWindow, obstacles, enemies);
+
+        for (Obstacles obstacle : obstacles) {
+            obstacle.addToCanvas();
+        }
+
+        for (Enemy ememy : enemies) {
+            ememy.addToCanvas();
+        }
+
+        finishLine = new FinishLine(canvasWindow, background);
+        character = new Character(canvasWindow, obstacles,finishLine);
+        character.addToCanvas(canvasWindow);
+
+    enemyLogic = new EnemyLogic(canvasWindow, character, background, enemies, null);
 
     canvasWindow.animate(dt -> { 
             double targetCameraX = character.getNaturalX() - 300;

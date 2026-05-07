@@ -95,8 +95,8 @@ public class Character {
             if (x < 0){
                 x = 0;
             }
-            if (x > 4200){
-                x = 4200;
+            if (x > 4400){
+                x = 4400;
             }
 
             updateCharacter();

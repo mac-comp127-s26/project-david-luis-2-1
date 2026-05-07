@@ -85,21 +85,20 @@ public class Level {
 
         pipe(3300, GROUND - 70, 70);
 
-
+        enemy(3370, ENEMY_Y, 3360, 3430);
 
         brick(3420, GROUND - 60,  60, 20);
         brick(3480, GROUND - 120, 60, 20);
         brick(3540, GROUND - 180, 60, 20);
         brick(3600, GROUND - 240, 60, 20);
 
+        enemy(3500, ENEMY_Y, 3440, 3600);
+
         pipe(3680, GROUND - 60, 60);
 
        
-        enemy(3760, ENEMY_Y, 3730, 3790); 
-
-       enemy(3850, ENEMY_Y, 3800, 3900);
-
-        enemy(3950, ENEMY_Y, 3910, 4020);
+    
+        enemy(3800, ENEMY_Y, 3780, 38650);
     }
 
 private void pipe(double x, double y , double height) {
