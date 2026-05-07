@@ -5,6 +5,7 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsObject;
 
 public class EnemyLogic {
+    private Runnable onGameOver;
     private List<Enemy> opponenets;
     private Character character;
     private Background background;
@@ -16,7 +17,8 @@ public class EnemyLogic {
 
     private static final double HIT_COOLDOWN_TIME = 1.5;
 
-    public EnemyLogic(CanvasWindow canvas, Character character, Background background, List<Enemy> opponenets) {
+    public EnemyLogic(CanvasWindow canvas, Character character, Background background, List<Enemy> opponenets, Runnable onGameOver) {
+        this.onGameOver = onGameOver;
         this.canvas = canvas;
         this.character = character;
         this.background = background;
@@ -65,23 +67,12 @@ public class EnemyLogic {
             score += 100;
             background.updateScore(score);
         } else if (!hitCooldown) {
-            enemy.remove();
-            loseLife();
-            hitCooldown = true;
-            contactTimer = HIT_COOLDOWN_TIME;
-        }
+    loseLife();
+    hitCooldown = true;
+    contactTimer = HIT_COOLDOWN_TIME;
+}
     }
 }
-
-    public void loseLife() {
-        if (lives > 0) {
-            lives--;
-            background.updateLives(lives);
-        }
-        if (lives == 0) {
-            gameOver();
-        }
-    }
 
     public void gameOver() {
         System.out.println("Game Over! Final Score: " + score);
@@ -91,6 +82,16 @@ public class EnemyLogic {
         background.updateScore(score);
 
     }
+
+    public void loseLife() {
+    if (lives > 0) {
+        lives--;
+        background.updateLives(lives);
+    }
+    if (lives == 0) {
+        onGameOver.run();
+    }
+}
 
 
     public int getScore() {
