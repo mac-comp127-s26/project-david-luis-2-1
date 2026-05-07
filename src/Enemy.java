@@ -1,15 +1,15 @@
-import java.awt.Color;
-import java.util.List;
 
+// @Authors: Luis Gonzalez-Xochihua and David Acuna
+// Overview of Class: This class creates the enemy. 
+import java.util.List;
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
 
-
+/**
+ * Creates a enemy for the game.
+ */
 public class Enemy {
     private Image currentSprite;
-    private Image leftSprite;
-    private Image rightSprite;
-   
     private CanvasWindow canvas;
     private double x;
     private double y;
@@ -17,22 +17,21 @@ public class Enemy {
     private double height = 110;
     private double speed = 120;
     private double direction = 1;
-    private double moveLeft;
-    private double moveRight;
     private boolean active = true;
-    private List<Obstacles> obstacles;
-
-    private static final Color ENEMY_COLOR = new Color(180, 50, 50);
-
-    public Enemy(CanvasWindow canvas, double x, double y, double moveLeft, double moveRight, List<Obstacles> obstacles) {
-        this.obstacles = obstacles;
+/**
+ * Creates the enemy for the game. 
+ * @param canvas is a variable that creates the canvas for the game.
+ * @param x is a variable that creates the X-Coordinate for the enemy's position in game. 
+ * @param y is a variable that creates the Y-Coordinate for the enemy's position in game. 
+ * @param moveLeft is the variable that tell how far the individual enemy moves left in the game.
+ * @param moveRight
+ * @param obstacles
+ */
+    public Enemy(CanvasWindow canvas, double x, double y, double moveLeft, double moveRight,
+        List<Obstacles> obstacles) {
         this.canvas = canvas;
         this.x = x;
         this.y = y;
-        this.moveLeft = moveLeft;
-        this.moveRight = moveRight;
-
-
         Image spriteLeft = new Image("right_tung.png");
         Image spriteRight = new Image("left_tung.png");
 
@@ -51,35 +50,34 @@ public class Enemy {
 
             this.x += speed * direction * dt;
 
-        for (Obstacles obst : obstacles) {
-        double obsLeft = obst.getX();
-        double obsRight = obst.getX() + obst.getWidth();
-        double obsTop = obst.getY();
-        double obsBottom = obst.getY() + obst.getHeight();
+            for (Obstacles obst : obstacles) {
+                double obsLeft = obst.getX();
+                double obsRight = obst.getX() + obst.getWidth();
+                double obsTop = obst.getY();
+                double obsBottom = obst.getY() + obst.getHeight();
 
-        
-        
-       boolean hittingRight = direction == 1 &&
-                               this.x + width >= obsLeft &&
-                               this.x + width <= obsLeft + 10 &&
-                               this.y + height > obsTop &&
-                               this.y < obsBottom;
 
-          boolean hittingLeft = direction == -1 &&
-                              this.x <= obsRight &&
-                              this.x >= obsRight - 10 &&
-                              this.y + height > obsTop &&
-                              this.y < obsBottom;
-    if (hittingRight) {
-            this.x = obsLeft - width;
-            direction = -1;
-            updateSprite(spriteLeft);
-        } else if (hittingLeft) {
-            this.x = obsRight;
-            direction = 1;
-            updateSprite(spriteRight);
-        }
-    }
+                boolean hittingRight = direction == 1 &&
+                    this.x + width >= obsLeft &&
+                    this.x + width <= obsLeft + 10 &&
+                    this.y + height > obsTop &&
+                    this.y < obsBottom;
+
+                boolean hittingLeft = direction == -1 &&
+                    this.x <= obsRight &&
+                    this.x >= obsRight - 10 &&
+                    this.y + height > obsTop &&
+                    this.y < obsBottom;
+                if (hittingRight) {
+                    this.x = obsLeft - width;
+                    direction = -1;
+                    updateSprite(spriteLeft);
+                } else if (hittingLeft) {
+                    this.x = obsRight;
+                    direction = 1;
+                    updateSprite(spriteRight);
+                }
+            }
 
 
             currentSprite.setPosition(this.x, this.y);
@@ -126,9 +124,9 @@ public class Enemy {
     public boolean isActive() {
         return active;
     }
-    public void setOffsetX(double offsetX){
+
+    public void setOffsetX(double offsetX) {
         currentSprite.setPosition(this.x + offsetX, this.y);
     }
 
 }
-    
