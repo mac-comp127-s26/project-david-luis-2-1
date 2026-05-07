@@ -1,10 +1,12 @@
-import java.awt.Color;
+// @Authors: Luis Gonzalez-Xochihua and David Acuna
+// Overview of Class: This class creates the game of Carti 2D: TUNG MADNESS.
 import java.util.ArrayList;
 import java.util.List;
-
 import edu.macalester.graphics.CanvasWindow;
-import edu.macalester.graphics.Image;
 
+/**
+ * The game of Carti 2D: TUNG MADNESS.
+ */
 public class MainGame {
     private static final int CANVAS_HEIGHT = 600;
     private static final int CANVAS_WIDTH = 1750;
@@ -15,14 +17,16 @@ public class MainGame {
     private List<Obstacles> obstacles = new ArrayList<>();
     private List<Enemy> enemies = new ArrayList<>();
     private double cameraX = 0;
-    private EnemyLogic enemyLogic;
     private FinishLine finishLine;
 
+    /**
+     * Creates the game itself and the animation for the camera movement as well.
+     */
     public MainGame() {
-        canvasWindow = new CanvasWindow("Carti Platformer", CANVAS_WIDTH, CANVAS_HEIGHT);
+        canvasWindow = new CanvasWindow("Carti 2D: TUNG MADNESS", CANVAS_WIDTH, CANVAS_HEIGHT);
         background = new Background(canvasWindow);
-
-        Level level = new Level(canvasWindow, obstacles, enemies);
+        Level level = new Level(canvasWindow, obstacles, enemies); // Note: Need this line in order to make the level
+                                                                   // for the game
 
         for (Obstacles obstacle : obstacles) {
             obstacle.addToCanvas();
@@ -33,12 +37,12 @@ public class MainGame {
         }
 
         finishLine = new FinishLine(canvasWindow, background);
-        character = new Character(canvasWindow, obstacles,finishLine);
+        character = new Character(canvasWindow, obstacles, finishLine);
         character.addToCanvas(canvasWindow);
 
-    enemyLogic = new EnemyLogic(canvasWindow, character, background, enemies, null);
+        new EnemyLogic(canvasWindow, character, background, enemies, null);
 
-    canvasWindow.animate(dt -> { 
+        canvasWindow.animate(dt -> {
             double targetCameraX = character.getNaturalX() - 300;
             targetCameraX = Math.max(0, targetCameraX);
             targetCameraX = Math.min(LEVEL_WIDTH - CANVAS_WIDTH, targetCameraX);
@@ -46,27 +50,28 @@ public class MainGame {
             character.setCameraX(targetCameraX);
             background.setOffsetX(-cameraX);
 
-        for (Obstacles obs : obstacles){
-            obs.setOffsetX(-cameraX);
-        }
-        for (Enemy enm : enemies){
-            enm.setOffsetX(-cameraX);
-        }
-        finishLine.setOffsetX(-cameraX);
-        finishLine.checkFlagCollision(character);
+            for (Obstacles obs : obstacles) {
+                obs.setOffsetX(-cameraX);
+            }
+            for (Enemy enm : enemies) {
+                enm.setOffsetX(-cameraX);
+            }
+            finishLine.setOffsetX(-cameraX);
+            finishLine.checkFlagCollision(character);
         });
     }
 
-
+    /**
+     * It adds the animation where the enemies stay whenever the character touches it sideways.
+     */
     private void setupGame() {
-    canvasWindow.removeAll();
-    obstacles.clear();
-    enemies.clear();
-    cameraX = 0;
-    background = new Background(canvasWindow);
-    Level level = new Level (canvasWindow, obstacles, enemies);
+        canvasWindow.removeAll();
+        obstacles.clear();
+        enemies.clear();
+        cameraX = 0;
+        background = new Background(canvasWindow);
 
-    for (Obstacles obstacle : obstacles) {
+        for (Obstacles obstacle : obstacles) {
             obstacle.addToCanvas();
         }
 
@@ -75,10 +80,10 @@ public class MainGame {
         }
 
         finishLine = new FinishLine(canvasWindow, background);
-        character = new Character(canvasWindow, obstacles,finishLine);
+        character = new Character(canvasWindow, obstacles, finishLine);
         character.addToCanvas(canvasWindow);
-    
-        enemyLogic = new EnemyLogic(canvasWindow, character, background, enemies, ()-> setupGame());
+
+        new EnemyLogic(canvasWindow, character, background, enemies, () -> setupGame());
     }
 
     public static void main(String[] args) {

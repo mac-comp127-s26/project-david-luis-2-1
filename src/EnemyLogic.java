@@ -19,7 +19,7 @@ public class EnemyLogic {
     private List<Enemy> opponenets;
 
     /**
-     * It establishes the actual enemy logic for the enemy.
+     * It establishes the actual enemy logic for the enemy and the animation for the timer.
      * 
      * @param canvas     is a variable that creates the canvas for the game
      * @param character  is variable that uses the character itself in the game.
