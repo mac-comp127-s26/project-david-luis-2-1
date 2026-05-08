@@ -1,7 +1,12 @@
+// @Authors: Luis Gonzalez-Xochihua and David Acuna
+// Overview of Class: This class creates the obstacles for the game.
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Rectangle;
 import java.awt.Color;
 
+/**
+ * Create a obstacle for the game.
+ */
 public class Obstacles {
     private Rectangle rect;
     private CanvasWindow canvas;
@@ -10,6 +15,9 @@ public class Obstacles {
     private double width;
     private double height;
 
+    /**
+     * Create the obstacle for the game.
+     */
     public Obstacles(CanvasWindow canvas, double x, double y, double width, double height, Color color) {
         this.canvas = canvas;
         this.x = x;
@@ -45,7 +53,13 @@ public class Obstacles {
     public double getHeight() {
         return height;
     }
-    public void setOffsetX(double offsetX){
+
+    /**
+     * It creates the camera's movement to follow the character in the game using the obstacles class.
+     * 
+     * @param offsetX is a variable that helps follow the character horizontally forward or backward.
+     */
+    public void setOffsetX(double offsetX) {
         rect.setPosition(x + offsetX, y);
     }
 }

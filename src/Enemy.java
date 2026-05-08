@@ -134,7 +134,6 @@ public class Enemy {
 
     /**
      * It creates the camera's movement to follow the character in the game using the Enemy class
-     * 
      * @param offsetX is a variable that helps follow the character horizontally forward or backward.
      */
     public void setOffsetX(double offsetX) {

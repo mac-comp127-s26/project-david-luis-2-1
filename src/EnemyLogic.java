@@ -21,7 +21,7 @@ public class EnemyLogic {
     /**
      * It establishes the actual enemy logic for the enemy and the animation for the timer.
      * 
-     * @param canvas     is a variable that creates the canvas for the game
+     * @param canvas     is a variable that creates the canvas for the game.
      * @param character  is variable that uses the character itself in the game.
      * @param background is a variable that creates the background for the game.
      * @param opponenets is a variable to uses the opponenets/enemies that are in game itself.
