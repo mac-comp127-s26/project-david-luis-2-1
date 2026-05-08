@@ -1,4 +1,3 @@
-
 // @Authors: Luis Gonzalez-Xochihua and David Acuna
 // Overview of Class: This class provides the aspects for the ending of the game.
 import edu.macalester.graphics.CanvasWindow;
