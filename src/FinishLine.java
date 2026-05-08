@@ -14,16 +14,16 @@ public class FinishLine {
     private double x;
     private double y;
 
-    public FinishLine (CanvasWindow canvas, Background background){
+    public FinishLine(CanvasWindow canvas, Background background) {
         this.canvas = canvas;
         this.background = background;
         createFlag();
     }
 
-    private void createFlag(){
+    private void createFlag() {
         x = 3850;
         y = 397;
-        flag = new Image(x,y, "Flag.png");
+        flag = new Image(x, y, "Flag.png");
         flag.setMaxWidth(80);
         flag.setMaxHeight(120);
         canvas.add(flag);
@@ -34,18 +34,18 @@ public class FinishLine {
         canvas.add(castle);
     }
 
-    public void setOffsetX (double offsetX){
-        flag.setPosition(x + offsetX , y);
+    public void setOffsetX(double offsetX) {
+        flag.setPosition(x + offsetX, y);
         castle.setPosition(x + 100 + offsetX, y - 163);
     }
 
     public void checkFlagCollision(Character character) {
-    if (!gameWon && character.getNaturalX() >= x - 50){
-        gameWon = true;
-        levelComplete();
-        winScreen();
+        if (!gameWon && character.getNaturalX() >= x - 50) {
+            gameWon = true;
+            levelComplete();
+            winScreen();
+        }
     }
-}
 
     public void levelComplete() {
         int score = background.getTime() * 50;
@@ -53,29 +53,27 @@ public class FinishLine {
         background.stopTimer();
     }
 
-    public void winScreen(){
+    public void winScreen() {
         GraphicsText winText = new GraphicsText("You Won!", canvas.getWidth() / 2 - 80, canvas.getHeight() / 2);
         winText.setFontSize(50);
         canvas.add(winText);
         playWinMusic();
     }
 
-    public boolean gameWin(){
+    public boolean gameWin() {
         return gameWon;
     }
 
-    //early test for music
     private void playWinMusic() {
-    try {
-        File musicFile = new File("res/win_music.wav");
-        AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicFile);
-        Clip clip = AudioSystem.getClip();
-        clip.open(audioStream);
-        clip.start();
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
-    } catch (Exception e) {
-       System.out.println("Could not play music: " + e.getMessage());
+        try {
+            File musicFile = new File("res/win_music.wav");
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicFile);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (Exception e) {
+            System.out.println("Could not play music: " + e.getMessage());
+        }
     }
 }
-}
-
