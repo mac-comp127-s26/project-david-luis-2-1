@@ -63,4 +63,3 @@ public class Obstacles {
         rect.setPosition(x + offsetX, y);
     }
 }
-

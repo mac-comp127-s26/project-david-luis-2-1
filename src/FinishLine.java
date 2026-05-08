@@ -32,10 +32,7 @@ public class FinishLine {
         createFlag();
     }
 
-    /**
-     * This creates the flag at the end of the game.
-     */
-    private void createFlag() {
+    private void createFlag(){
         x = 3850;
         y = 397;
         flag = new Image(x, y, "Flag.png");
@@ -49,13 +46,8 @@ public class FinishLine {
         canvas.add(castle);
     }
 
-    /**
-     * It creates the camera's movement to follow the character in the game using the FinishLine class
-     * 
-     * @param offsetX is a variable that helps follow the character horizontally forward or backward.
-     */
-    public void setOffsetX(double offsetX) {
-        flag.setPosition(x + offsetX, y);
+    public void setOffsetX (double offsetX){
+        flag.setPosition(x + offsetX , y);
         castle.setPosition(x + 100 + offsetX, y - 163);
     }
 
@@ -82,11 +74,7 @@ public class FinishLine {
         background.stopTimer();
     }
 
-    /**
-     * This provides the win screen method whenever the character reahces the finishline and it doesn't
-     * lose 3 lives.
-     */
-    public void winScreen() {
+    public void winScreen(){
         GraphicsText winText = new GraphicsText("You Won!", canvas.getWidth() / 2 - 80, canvas.getHeight() / 2);
         winText.setFontSize(50);
         canvas.add(winText);
@@ -97,9 +85,7 @@ public class FinishLine {
         return gameWon;
     }
 
-    /**
-     * it provides the music at the end whenever you get to the ending of the level of the game.
-     */
+    //early test for music
     private void playWinMusic() {
         try {
             File musicFile = new File("res/win_music.wav");
