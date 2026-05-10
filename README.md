@@ -43,9 +43,13 @@ A person should run the program by opening VS Code and pressing the triangle in 
  
 Acknowledgments: 
 Carti PNG’s: Carti Link: https://www.tiktok.com/t/ZTk7ew8b5/
+
 Red Flag:  Flag Link : https://www.magnific.com/premium-vector/pixelated-red-flag-icon-retro-gaming-digital-graphic-with-simple-design_284569430.htm#fromView=keyword&page=1&position=25&uuid=3e6fdc6e-2ca6-48c4-bc68-42b3066d8bd8&query=8+bit+flag
+
 Castle: Castle Link: https://www.dreamstime.com/pixel-art-old-castle-detailed-isolated-vector-pixel-castle-isolated-vector-image131267724
+
 Tung Tung Sahur PNG: Tung Tung Sahur: https://stock.adobe.com/am/images/vector-illustrations-anomali-italian-brainrot-tung-tung-tung-sahur-pixelated-orange-character-with-smiling-face-and-a-taillike-extension-eps-editable/1571938150 
+
 Final Song: (Playboi Carti, 2025, EVIL J0RDAN) Song Link: https://www.youtube.com/watch?v=VcRc2DHHhoM
  
 Known issues: 
