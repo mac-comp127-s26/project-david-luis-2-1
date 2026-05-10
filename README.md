@@ -12,7 +12,7 @@ I needed to download GitHub and VS Code. Then, I would need to download the java
 
 The expected output would be running the game that we created.
 
-## NOTE: The screenshots are in the code and are in the Github Repo. It's called Screenshot A and B. 
+### NOTE: The screenshots are in the code and are in the Github Repo. It's called Screenshot A and B. 
 
 ### A presentation video 
 [Watch the Video here] (https://youtu.be/thmWfyfTqV0)
