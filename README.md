@@ -1,6 +1,38 @@
-# Project 2D Carti; TUNG MADNESS
+# 2D Carti: TUNG MADNESS
+## Information about the project: 
 
-Project Report: 
+### What is this GitHub repository all about?
+The Github repository holds all our code and files that we created and needed in order to make our game for the project. 
+
+### What software (with the version numbers) need to be installed to run the code contained in this GitHub repository, eg, openjdk 25.0.1 2025-10-21 LTS and VSCode 1.115.0
+The software required to run the code is openjdk 25.0.1 2025-10-21 LTS and VSCode 1.115.0 and the java extension for VS Code. 
+
+What steps need to be taken to run the code contained in this GitHub repository? Think about the steps you did at the beginning of the semester to prepare your machine for class.
+What does the expected output look like? You can use screenshots of the main windows of the software.
+I needed to download GitHub and VS Code. Then, I would need to download the java extension for VS Code in order to have this code running with the Kilt Graphics connected to it by joining the MSCS github. 
+
+The expected output would be running the game that we created.
+Here is some screenshots of it: 
+![Screenshot A](ScreenshotA2/photo.jpg)
+![Screenshot B](ScreenshotB/photo.jpg)
+
+A presentation video as described below.
+https://youtu.be/thmWfyfTqV0
+Here is the video link.
+
+A presentation slides as described below.
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTQvQJexmSAXIyc9t2DRDadjtk87PuiysN83HYDd3ZDPESnmYuHSjWFrn8v7YaF8USWRKIHg9sRMaWT/pubembed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+What known limitations does the software currently suffer from, eg, known bugs or cases that the software can not currently handle?
+None in our case, the game manages to work everything and runs smoothly.
+
+What resources were referenced while developing the software?
+Kilt Graphics: https://mac-comp127.github.io/kilt-graphics/
+Homeworks: Bubble Blitz, Breakout!, Audio Synth
+Exercises: Weather display
+
+## Project Report: 
+
 Project Title: 
 Carti 2D: TUNG MADNESS
 Names of your team members: 
@@ -23,3 +55,5 @@ We could not manage to add more enemies, and if we tried, we were unable to get 
 
 Societal impact:
 When taking a look at our game, it follows the standard platformer formula that has existed from the very first ones. When designing our game, we decided to incorporate the current internet youth culture through the use of a popular AI creation, which has become a meme alongside a beloved American rapper. This in itself could be considered a critique, in which people may state that these figures are not ones to be looked up to or that our project lacks originality (in terms of creation). In this case, it could be looked down upon those people who believe that AI creations should not be used, or that celebrities should not be idolized. However, our game takes the perspective that anyone could be in these positions, so we decided to reflect part of the culture of today and make a fun game of characters we find entertaining. Our game is also very reliant on visuals; only a person who is able to see the screen would be able to play this game. In that sense, it could be deemed not welcoming to all. We believe that our code does not have the potential to exclude or harm vulnerable populations, nor that our software project could be used in malicious or oppressive situations. We do not see a situation in which this could apply to us.
+
+
