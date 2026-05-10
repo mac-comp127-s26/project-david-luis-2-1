@@ -8,6 +8,7 @@ import edu.macalester.graphics.events.Key;
 /**
  * Creates a character for the game.
  */
+
 public class Character {
     private static final double JUMP_POWER = -450;
     private static final double GRAVITY = 800;
