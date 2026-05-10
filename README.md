@@ -11,7 +11,8 @@ The software required to run the code is openjdk 25.0.1 2025-10-21 LTS and VSCod
 I needed to download GitHub and VS Code. Then, I would need to download the java extension for VS Code in order to have this code running with the Kilt Graphics connected to it by joining the MSCS github. 
 
 The expected output would be running the game that we created.
-NOTE: The screenshots are in the code and are in the Github Repo. It's called Screenshot A and B. 
+
+### NOTE: The screenshots are in the code and are in the Github Repo. It's called Screenshot A and B. 
 
 ### A presentation video 
 [Watch the Video here] (https://youtu.be/thmWfyfTqV0)
