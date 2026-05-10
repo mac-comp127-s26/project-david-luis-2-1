@@ -8,7 +8,7 @@ import javax.sound.sampled.*;
 import java.io.File;
 
 /**
- * Creates a finish line for the game
+ * Creates a finish line for the game.
  */
 public class FinishLine {
     private Image castle;
