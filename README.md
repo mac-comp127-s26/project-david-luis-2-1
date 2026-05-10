@@ -1,4 +1,4 @@
-###2D Carti: TUNG MADNESS
+# 2D Carti: TUNG MADNESS
 
 ## Project Report: 
 
